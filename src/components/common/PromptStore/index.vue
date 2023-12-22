@@ -2,8 +2,9 @@
 import type { DataTableColumns } from 'naive-ui'
 import { computed, h, ref, watch } from 'vue'
 import { NButton, NCard, NDataTable, NDivider, NInput, NList, NListItem, NModal, NPopconfirm, NSpace, NTabPane, NTabs, NThing, useMessage } from 'naive-ui'
-import PromptRecommend from '../../../assets/recommend.json'
 import { SvgIcon } from '..'
+import PromptRecommend from '@/assets/recommend.json'
+// import LocalPrompts from '@/assets/prompts-zh.json'
 import { usePromptStore } from '@/store'
 import { useBasicLayout } from '@/hooks/useBasicLayout'
 import { t } from '@/locales'
@@ -48,6 +49,7 @@ const promptStore = usePromptStore()
 
 // Prompt在线导入推荐List,根据部署者喜好进行修改(assets/recommend.json)
 const promptRecommendList = PromptRecommend
+
 const promptList = ref<any>(promptStore.promptList)
 
 // 用于添加修改的临时prompt参数

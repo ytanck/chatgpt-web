@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import type { Ref } from 'vue'
-import { computed, defineAsyncComponent, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import type { MessageReactive } from 'naive-ui'
@@ -16,9 +16,8 @@ import { useAuthStore, useChatStore, usePromptStore, useUserStore } from '@/stor
 import { fetchChatAPIProcess, fetchChatResponseoHistory, fetchChatStopResponding, fetchUpdateUserChatModel } from '@/api'
 import { t } from '@/locales'
 import { debounce } from '@/utils/functions/debounce'
-import IconPrompt from '@/icons/Prompt.vue'
 import { UserConfig } from '@/components/common/Setting/model'
-const Prompt = defineAsyncComponent(() => import('@/components/common/Setting/Prompt.vue'))
+// const Prompt = defineAsyncComponent(() => import('@/components/common/Setting/Prompt.vue'))
 
 let controller = new AbortController()
 let lastChatInfo: any = {}
@@ -629,7 +628,7 @@ onUnmounted(() => {
           <NSpin :show="firstLoading">
             <template v-if="!dataSources.length">
               <div class="flex items-center justify-center mt-4 text-center text-neutral-300">
-                <SvgIcon icon="ri:bubble-chart-fill" class="mr-2 text-3xl" />
+                <!-- <SvgIcon icon="ri:bubble-chart-fill" class="mr-2 text-3xl" /> -->
                 <span>Aha~</span>
               </div>
             </template>
@@ -677,11 +676,6 @@ onUnmounted(() => {
                 <SvgIcon icon="ri:download-2-line" />
               </span>
             </HoverButton>
-            <HoverButton v-if="!isMobile" @click="showPrompt = true">
-              <span class="text-xl text-[#4f555e] dark:text-white">
-                <IconPrompt class="w-[20px] m-auto" />
-              </span>
-            </HoverButton>
             <HoverButton v-if="!isMobile" :tooltip="usingContext ? '点击停止包含上下文' : '点击开启包含上下文'" :class="{ 'text-[#4b9e5f]': usingContext, 'text-[#a8071a]': !usingContext }" @click="handleToggleUsingContext">
               <span class="text-xl">
                 <SvgIcon icon="ri:chat-history-line" />
@@ -724,6 +718,6 @@ onUnmounted(() => {
         </NSpace>
       </div>
     </footer>
-    <Prompt v-if="showPrompt" v-model:roomId="uuid" v-model:visible="showPrompt" />
+    <!-- <Prompt v-if="showPrompt" v-model:roomId="uuid" v-model:visible="showPrompt" /> -->
   </div>
 </template>

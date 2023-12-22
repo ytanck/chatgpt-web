@@ -169,9 +169,9 @@ export default {
     info2FAStep3Tip3: '2. 联系管理员来关闭两步验证。',
   },
   store: {
-    siderButton: '提示词商店',
+    siderButton: '提示词指令',
     local: '本地',
-    online: '在线',
+    online: '网络',
     title: '标题',
     description: '描述',
     clearStoreConfirm: '是否清空数据？',
